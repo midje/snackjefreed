@@ -16,21 +16,21 @@ export default function Home() {
             </Head>
 
             <main className={`h-screen flex content-center flex-col ${inter.className}`}>
-                <div className={`flex-none py-12 px-4 text-5xl font-bold text-center`}>
+                <div className={`flex-none py-8 md:py-12 md:px-4 md:text-5xl text-4xl font-bold text-center`}>
                     Is het al <span className={`text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-green-600 via-yellow-400 animate-gradient-xy ${sonsieOne.className}`}>Snackje Freed</span>?
                 </div>
-                <div className="grow text-9xl text-center flex justify-center items-center">
+                <div className="grow  text-center flex justify-center items-center">
                     <div>
                         {isFriday ? <>
-                            <div className="text-12xl text-green-600 font-extrabold uppercase text-center py-4">JA!</div>
-                            <div className="text-4xl text-center">🍕 🍖 🍗 🍔 🍟  </div>
+                            <div className="text-7xl md:text-9xl text-green-600 font-extrabold uppercase text-center py-4">JA!</div>
+                            <div className="text-xl md:text-3xl text-center">🍕 🍖 🍗 🍔 🍟</div>
                         </> : <>
-                            <div className="text-12xl text-red-600 font-extrabold uppercase text-center py-4">Nee</div>
-                            <div className="text-3xl  font-bold text-center">Vandaag helaas geen snack :(</div>
+                            <div className="text-7xl md:text-9xl text-red-600 font-extrabold uppercase text-center py-4">Nee</div>
+                            <div className="text-xl md:text-3xl font-bold text-center">Vandaag helaas geen snack :(</div>
                         </>}
                     </div>
                 </div>
-                <p className="flex-none text-xl italic text-center m-8">Een creatie van  <a
+                <p className="flex-none text-lg md:text-xl italic text-center m-4 md:m-8">Een creatie van  <a
                     href="https://midje.nl/?ref=snackjefreed" className="underline">team Midje</a></p>
             </main>
 
