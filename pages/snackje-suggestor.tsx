@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Sonsie_One} from "@next/font/google";
+import Head from "next/head";
 
 interface Item {
     name: string;
@@ -102,17 +103,23 @@ const SlotMachine = () => {
 
     return (
         <>
+            <Head>
+                <title>De Snackje Suggestor</title>
+                <meta name="description" content="Is het eindelijk zo ver, komt de vraag van de eeuw: welke snack?" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className={`flex-none py-8 md:py-12 md:px-4 md:text-5xl text-4xl font-bold text-center`}>
                 De <span className={`text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-green-600 via-yellow-400 animate-gradient-xy ${sonsieOne.className}`}>Snackje Suggestor</span>
             </div>
-        <div className="flex flex-col items-center">
-            <div className={`slot relative overflow-hidden bg-white w-[300px] h-[300px] border-4 border-yellow-400 ${isSpinning ? 'spinning' : ''}`}>
-                {renderSnacks()}
+            <div className="flex flex-col items-center">
+                <div className={`slot relative overflow-hidden bg-white w-[300px] h-[300px] border-4 border-yellow-400 ${isSpinning ? 'spinning' : ''}`}>
+                    {renderSnacks()}
+                </div>
+                <button className="p-3 bg-gradient-to-r from-red-500 to-green-600 via-yellow-400 animate-gradient-xy border shadow-sm text-white text-lg font-semibold italic rounded mt-4" onClick={reroll}>
+                    Ik wil een andere snack
+                </button>
             </div>
-            <button className="p-3 bg-gradient-to-r from-red-500 to-green-600 via-yellow-400 animate-gradient-xy border shadow-sm text-white text-lg font-semibold italic rounded mt-4" onClick={reroll}>
-                Ik wil een andere snack
-            </button>
-        </div>
         </>
     );
 };
