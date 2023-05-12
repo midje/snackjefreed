@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import { Sonsie_One, Inter } from '@next/font/google'
+import React from "react";
+import Link from "next/link";
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] })
 const inter = Inter({ weight: ['400', '700', '800'], style: 'normal', subsets: ['latin'] })
 
@@ -22,8 +24,10 @@ export default function Home() {
                 <div className="grow  text-center flex justify-center items-center">
                     <div>
                         {isFriday ? <>
-                            <div className="text-7xl md:text-9xl text-green-600 font-extrabold uppercase text-center py-4">JA!</div>
-                            <div className="text-xl md:text-3xl text-center">🍕 🍖 🍗 🍔 🍟</div>
+                            <div className="text-7xl md:text-9xl text-green-600 font-extrabold uppercase text-center py-8">JA!</div>
+                            <Link href="/snackje-suggestor" className="p-3 bg-gradient-to-r from-red-500 to-green-600 via-yellow-400 animate-gradient-xy border shadow-sm text-white text-sm mt-3 font-semibold italic rounded mt-4" >
+                                Naar de Snackje Suggestor  🍖 🍗 🍔 🍟
+                            </Link>
                         </> : <>
                             <div className="text-7xl md:text-9xl text-red-600 font-extrabold uppercase text-center py-4">Nee</div>
                             <div className="text-xl md:text-3xl font-bold text-center">Vandaag helaas geen snack :(</div>
