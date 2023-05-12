@@ -55,6 +55,10 @@ const snacks: Item[] = [
     {
         name: 'Eierbal',
         image: 'https://deworstenwinkel.eu/wp-content/uploads/2021/06/eierbal.jpg'
+    },
+    {
+        name: 'Kippenbout',
+        image: 'https://i.imgur.com/a2iQGIe.png'
     }
 
 
