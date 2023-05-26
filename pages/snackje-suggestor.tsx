@@ -66,7 +66,11 @@ const snacks: Item[] = [
     },
     {
         name: 'Kibbeling',
-        image: 'https://i.imgur.com/m9GX57Z.jpg'
+        image: 'https://i.imgur.com/F8jf6gF.png'
+    },
+    {
+        name: 'Broodje Visstick',
+        image: 'https://i.imgur.com/OUeI2LY.png'
     }
 
 
