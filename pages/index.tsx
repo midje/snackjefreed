@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Sonsie_One, Inter } from '@next/font/google'
+import { Sonsie_One, Inter } from "next/font/google"
 import React from "react";
 import Link from "next/link";
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] })

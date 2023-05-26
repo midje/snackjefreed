@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Sonsie_One} from "@next/font/google";
+import {Sonsie_One} from "next/font/google";
 import Head from "next/head";
 
 interface Item {
