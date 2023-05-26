@@ -6,7 +6,7 @@ import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    init({ url: 'https://a.webmethod.nl', siteId: '16' });
+    init({ url: 'https://a.webmethod.eu', siteId: '16' });
   }, []);
 
   return <Component {...pageProps} />
