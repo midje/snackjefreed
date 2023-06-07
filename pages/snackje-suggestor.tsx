@@ -71,8 +71,11 @@ const snacks: Item[] = [
     {
         name: 'Broodje Visstick',
         image: 'https://i.imgur.com/OUeI2LY.png'
+    },
+    {
+        name: 'Broodje Knak',
+        image: 'https://i.imgur.com/zreCpE5.png'
     }
-
 
 ];
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] })
