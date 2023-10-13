@@ -135,9 +135,11 @@ const SlotMachine = () => {
                 <div className={`slot relative overflow-hidden bg-white w-[300px] h-[300px] border-4 border-yellow-400 ${isSpinning ? 'spinning' : ''}`}>
                     {renderSnacks()}
                 </div>
-                <button className="p-3 bg-gradient-to-r from-red-500 to-green-600 via-yellow-400 animate-gradient-xy border shadow-sm text-white text-lg font-semibold italic rounded mt-4" onClick={reroll}>
+                <button className="p-6 bg-gradient-to-r from-red-500 to-green-600 via-yellow-400 animate-gradient-xy border shadow-sm text-white text-xl font-semibold italic rounded mt-4" onClick={reroll}>
                     Ik wil een andere snack
                 </button>
+
+                <p className="flex-none mt-12 italic text-center m-4 md:m-8"><a href="https://docs.google.com/forms/d/e/1FAIpQLSe6_-bglUQ15bEuzK2neljmlqhRGG8mFol0t68x5x3lWnjmPw/viewform" target="_blank" className="underline">Stuur je snack in!</a></p>
             </div>
         </>
     );
