@@ -85,6 +85,10 @@ const snacks: Item[] = [
         image: 'https://bergjetricht.nl/image/cache/data/vlees-afbeeldingen/saucijzenbroodje-600x600.png'
     },
     {
+        name: 'Kaasbroodje',
+        image: 'https://www.bakkerijkwakman.nl/wp-content/uploads/2021/03/Kaasbroodje-de-echte-bakker-Kwakman.png'
+    },
+    {
         name: 'Broodje Frikandel',
         image: 'https://www.t-hepke.nl/wp-content/uploads/2020/04/broodje_frikandel.png',
     },
