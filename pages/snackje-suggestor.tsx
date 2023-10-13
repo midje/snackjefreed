@@ -45,6 +45,10 @@ const snacks: Item[] = [
         image: 'https://www.cafetariacentrumgroesbeek.nl/wp-content/uploads/2020/04/berehap-300x300.jpg',
     },
     {
+        name: 'Broodje Bal',
+        image: 'https://www.snackbarroma.nl/wp-content/uploads/2020/10/snackbarroma-foe_broodjes_broodje_bal.jpg',
+    },
+    {
         name: 'Frikandelbroodje',
         image: 'https://www.degrootedelgebak.nl/1651-large_default/frikandelbroodje-met-currysaus.jpg'
     },
@@ -75,7 +79,36 @@ const snacks: Item[] = [
     {
         name: 'Broodje Knak',
         image: 'https://i.imgur.com/zreCpE5.png'
-    }
+    },
+    {
+        name: 'Saucijzenbroodje',
+        image: 'https://bergjetricht.nl/image/cache/data/vlees-afbeeldingen/saucijzenbroodje-600x600.png'
+    },
+    {
+        name: 'Broodje Frikandel',
+        image: 'https://www.t-hepke.nl/wp-content/uploads/2020/04/broodje_frikandel.png',
+    },
+    {
+        name: 'Broodje Kroket',
+        image: 'https://kwekkeboom.amsterdam/wp-content/uploads/2019/10/broodje-kroket.jpg',
+    },
+    {
+        name: 'Broodje Hamburger',
+        image: 'https://www.okokorecepten.nl/i/recepten/kookboeken/2014/jamies-comfort-food/jamie-oliver-hamburger-500.jpg',
+    },
+
+    {
+        name: 'Broodje Bajesbal',
+        image: 'https://i.imgur.com/Sy4kOLo.png',
+    },
+    {
+        name: 'Runder gehaktbal',
+        image: 'https://files.vomar.nl/articles/Vomar-Runder-Gehaktbal-Rund-4-Stuks-2230590000000-1-638007338175938892.png',
+    },
+    {
+        name: 'Groente loempia',
+        image: 'https://www.laurasbakery.nl/wp-content/uploads/2020/10/Vegetarische-mini-loempias-uitgelicht.jpg',
+    },
 
 ];
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] })
@@ -87,7 +120,7 @@ const SlotMachine = () => {
         if (isSpinning) {
             let spinCount = 0;
 
-            const maxSpinCount = Math.floor(Math.random() * 40) + 20;
+            const maxSpinCount = Math.floor(Math.random() * 50) + snacks.length;
             const interval = setInterval(() => {
                 spinCount++;
                 setSelectedItemIndex((prevIndex) =>
@@ -98,7 +131,7 @@ const SlotMachine = () => {
                     clearInterval(interval);
                     setIsSpinning(false);
                 }
-            }, 100);
+            }, 90);
 
             return () => clearInterval(interval);
         }
