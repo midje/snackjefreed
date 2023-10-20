@@ -113,7 +113,10 @@ const snacks: Item[] = [
         name: 'Groente loempia',
         image: 'https://www.laurasbakery.nl/wp-content/uploads/2020/10/Vegetarische-mini-loempias-uitgelicht.jpg',
     },
-
+    {
+        name: 'Bagel',
+        image: 'https://i.imgur.com/TlAuX66.png',
+    },
 ];
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] })
 const SlotMachine = () => {
