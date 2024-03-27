@@ -117,6 +117,10 @@ const snacks: Item[] = [
         name: 'Bagel',
         image: 'https://i.imgur.com/TlAuX66.png',
     },
+    {
+        name: 'Macaroni uit de wasbak',
+        image: 'https://i.imgur.com/QcqCcOM.png',
+    },
 ];
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] })
 const SlotMachine = () => {
