@@ -10,6 +10,12 @@ interface Item {
   url: string;
 }
 
+interface Recipe {
+    id: string;
+    name: string;
+    image_url: string;
+}
+
 const BASE_URL = "https://flavourspot.nl/api";
 const apiGet = (endpoint: string): string => {
   return BASE_URL + endpoint;
@@ -23,11 +29,11 @@ const SlotMachine = () => {
   const [isFetching, setIsFetching] = useState(true);
   const [isSpinning, setIsSpinning] = useState(false);
 
-  const fetchData = useEffect(() => {
+  useEffect(() => {
     fetch(apiGet('/recipes?image=true&;limit=50'))
       .then(response => response.json())
       .then(data => {
-        data.map(recipe => {
+        data.map((recipe: Recipe) => {
           recipes.push({
             id: recipe.id,
             name: recipe.name,
