@@ -10,7 +10,7 @@ interface Item {
   url: string;
 }
 
-const BASE_URL = "http://127.0.0.1:8000/api";
+const BASE_URL = "https://flavourspot.nl/api";
 const apiGet = (endpoint: string): string => {
   return BASE_URL + endpoint;
 }
@@ -32,7 +32,7 @@ const SlotMachine = () => {
             id: recipe.id,
             name: recipe.name,
             image: recipe.image_url,
-            url: 'http://127.0.0.1:8000/recipe/' + recipe.id,
+            url: 'https://flavourspot.nl/recipe/' + recipe.id,
           });
         });
         setIsFetching(false);
