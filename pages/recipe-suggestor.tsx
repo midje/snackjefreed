@@ -3,17 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { Sonsie_One } from "next/font/google";
 import Head from "next/head";
 
-interface Item {
-  id: string;
-  name: string;
-  image: string;
-  url: string;
-}
-
 interface Recipe {
     id: string;
     name: string;
     image_url: string;
+    url?: string;
 }
 
 const BASE_URL = "https://flavourspot.nl/api";
@@ -21,12 +15,11 @@ const apiGet = (endpoint: string): string => {
   return BASE_URL + endpoint;
 }
 
-let recipes: Item[] = [];
+const recipes: Recipe[] = [];
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] })
 
 const SlotMachine = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-  const [isFetching, setIsFetching] = useState(true);
   const [isSpinning, setIsSpinning] = useState(false);
 
   useEffect(() => {
@@ -37,14 +30,13 @@ const SlotMachine = () => {
           recipes.push({
             id: recipe.id,
             name: recipe.name,
-            image: recipe.image_url,
+            image_url: recipe.image_url,
             url: 'https://flavourspot.nl/recipe/' + recipe.id,
           });
         });
-        setIsFetching(false);
         setIsSpinning(true);
       });
-  }, [isFetching]);
+  }, []);
 
   useEffect(() => {
     if (isSpinning) {
@@ -79,7 +71,7 @@ const SlotMachine = () => {
         key={index}
       >
 
-        <img src={recipe.image} alt={recipe.name} className="w-full h-5/6 object-cover object-center" />
+        <img src={recipe.image_url} alt={recipe.name} className="w-full h-5/6 object-cover object-center" />
         <p className="mt-2 text-center font-bold text-lg">{recipe.name}</p>
       </div >
     ));
