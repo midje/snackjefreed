@@ -137,7 +137,6 @@ const snacks: Item[] = [
         image: 'https://i.imgur.com/QcqCcOM.png',
     },
 ];
-
 const sonsieOne = Sonsie_One({ weight: '400', style: 'normal', subsets: ['latin'] });
 
 interface ReelProps {
@@ -161,26 +160,33 @@ const Reel: React.FC<ReelProps> = ({ isSpinning, resultIndex, duration, reelInde
 
     useEffect(() => {
         if (isSpinning) {
-            // Calculate the offset to stop at the correct snack
-            const stopOffset = -((snacks.length * (repetitions - 1) + resultIndex) * imageHeight);
+            // Reset the animation
+            setAnimationStyle({});
+            setKeyframes('');
 
-            // Unique keyframe name for each reel to prevent conflicts
-            const keyframeName = `spinAnimation${reelIndex}`;
+            // Delay to allow the reset to take effect
+            setTimeout(() => {
+                // Calculate the offset to stop at the correct snack
+                const stopOffset = -((snacks.length * (repetitions - 1) + resultIndex) * imageHeight);
 
-            // Define keyframes for the spinning animation
-            const keyframes = `
-        @keyframes ${keyframeName} {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(${stopOffset}px); }
-        }
-      `;
-            setKeyframes(keyframes);
+                // Unique keyframe name for each reel to prevent conflicts
+                const keyframeName = `spinAnimation${reelIndex}-${Date.now()}`;
 
-            // Reel animation style
-            const reelStyle: React.CSSProperties = {
-                animation: `${keyframeName} ${duration}ms cubic-bezier(0.5, 0, 0.5, 1) forwards`,
-            };
-            setAnimationStyle(reelStyle);
+                // Define keyframes for the spinning animation
+                const keyframes = `
+          @keyframes ${keyframeName} {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(${stopOffset}px); }
+          }
+        `;
+                setKeyframes(keyframes);
+
+                // Reel animation style
+                const reelStyle: React.CSSProperties = {
+                    animation: `${keyframeName} ${duration}ms cubic-bezier(0.5, 0, 0.5, 1) forwards`,
+                };
+                setAnimationStyle(reelStyle);
+            }, 50);
         } else {
             // When not spinning, set the position to the result
             const stopOffset = -((snacks.length * (repetitions - 1) + resultIndex) * imageHeight);
@@ -190,7 +196,7 @@ const Reel: React.FC<ReelProps> = ({ isSpinning, resultIndex, duration, reelInde
             setAnimationStyle(reelStyle);
             setKeyframes(''); // Clear keyframes
         }
-    }, [isSpinning, resultIndex, duration, reelIndex]);
+    }, [isSpinning, duration, reelIndex, resultIndex]);
 
     return (
         <>
@@ -210,35 +216,30 @@ const Reel: React.FC<ReelProps> = ({ isSpinning, resultIndex, duration, reelInde
 
 const SlotMachine: React.FC = () => {
     const [isSpinning, setIsSpinning] = useState<boolean>(false);
-    const [reelResults, setReelResults] = useState<number[]>([0, 0, 0]);
+    const [resultIndex, setResultIndex] = useState<number>(0);
     const [reelDurations, setReelDurations] = useState<number[]>([0, 0, 0]);
 
     const spinReels = () => {
-        setIsSpinning(true);
-
         // Generate a single random result for all reels
         const randomSnackIndex = Math.floor(Math.random() * snacks.length);
-        const newReelResults = [randomSnackIndex, randomSnackIndex, randomSnackIndex];
+        setResultIndex(randomSnackIndex);
 
         // Random durations for each reel to stop
         const durations = [
-            2000 + Math.random() * 1000, // 2-3 seconds
-            3000 + Math.random() * 1000, // 3-4 seconds
-            4000 + Math.random() * 1000, // 4-5 seconds
+            2000 + Math.random() * 1000,
+            2300 + Math.random() * 1000,
+            2500 + Math.random() * 1000,
         ];
         setReelDurations(durations);
 
-        // Schedule the update of reel results
-        durations.forEach((duration, index) => {
-            setTimeout(() => {
-                setReelResults(newReelResults);
+        // Start spinning
+        setIsSpinning(true);
 
-                // Stop spinning after the last reel stops
-                if (index === durations.length - 1) {
-                    setIsSpinning(false);
-                }
-            }, duration);
-        });
+        // Schedule stopping the spinning
+        const maxDuration = Math.max(...durations);
+        setTimeout(() => {
+            setIsSpinning(false);
+        }, maxDuration);
     };
 
     useEffect(() => {
@@ -269,12 +270,12 @@ const SlotMachine: React.FC = () => {
         </span>
             </div>
             <div className="flex flex-col items-center">
-                <div className="slot-machine flex">
+                <div className="slot-machine flex bg-white">
                     {[0, 1, 2].map((index) => (
                         <Reel
                             key={index}
                             isSpinning={isSpinning}
-                            resultIndex={reelResults[index]}
+                            resultIndex={resultIndex}
                             duration={reelDurations[index]}
                             reelIndex={index}
                         />
