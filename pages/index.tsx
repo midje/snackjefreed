@@ -15,6 +15,7 @@ export default function Home() {
                 <meta name="description" content="Is het alweer tijd voor het beste moment van de week: Snackje Freed" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
+
             </Head>
 
             <main className={`h-screen flex content-center flex-col ${inter.className}`}>
